@@ -1,20 +1,28 @@
 public class PCGame extends Game
 {
-     private String operatingSystemRequired;
-     private final static double DIGITAL_DISTRIBUTION_FEE=200; // The price of the PCGame
 
-
-     public PCGame(String name, int id, Genre genre, double rating, String operatingSystemRequired)
+    private static final double DIGITAL_DISTRIBUTION_FEE = 4.00;
+     public PCGame(String name, int id,double price,Genre genre, double rating)
     {
-        super(name, id, genre, rating);
-        this.operatingSystemRequired = operatingSystemRequired;
+        super(name, id,price, genre, rating);
+
     }
     @Override
-    public double getPrice()
-    {
-        return super.getPrice()+ DIGITAL_DISTRIBUTION_FEE;
-    }
+    public double getPrice() {
+        try {
+            double total = super.getPrice() + DIGITAL_DISTRIBUTION_FEE;
 
+            if (total < 0) {
+                throw new IllegalStateException("Price cannot be negative");
+            }
+
+            return total;
+
+        } catch (IllegalStateException e) {
+            System.out.println("Error: " + e.getMessage());
+            return 0;
+        }
+    }
     @Override
     public void displayInfo()
     {
@@ -23,8 +31,6 @@ public class PCGame extends Game
         System.out.println("Price: $" + getPrice());
         System.out.println("Genre: " + getGenre());
         System.out.println("Rating: " + getRating());
-        System.out.println("The Operating System Required ="+operatingSystemRequired);
-
 
     }
 }

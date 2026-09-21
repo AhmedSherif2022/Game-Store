@@ -1,4 +1,4 @@
 public enum Genre
 {
-    Action,Sports,RPG
+    ACTION,SPORTS,RPG,ADVENTURE,PUZZLE
 }

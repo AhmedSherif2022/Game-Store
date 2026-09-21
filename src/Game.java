@@ -1,15 +1,22 @@
 public abstract class Game extends Order {
+    private static int nextId = 1;
     private String name;
-    private int id;
+    private final int id;
     private Genre genre;
     private double rating;
     private double price;
-    public Game(String name, int id, Genre genre, double rating)
+    public Game(String name, int nextid,double price, Genre genre, double rating)
     {
         this.name = name;
-        this.id = id;
+        this.id = generateId();
+        this.price=price;
         this.genre=genre;
+
         this.rating = rating;
+    }
+    private static int generateId()
+    {
+        return nextId++;
     }
 
     public String getName()
@@ -25,11 +32,6 @@ public abstract class Game extends Order {
     public int getId()
     {
         return id;
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
     }
 
     public Genre getGenre()
@@ -53,27 +55,11 @@ public abstract class Game extends Order {
     }
     public void setPrice(double price)
     {
-        if(price<0){
-            throw new IllegalArgumentException("Price cannot be negative");
-        }
-        else
-        {
-           this.price=price;
-
-        }
+        this.price=price;
     }
     public double getPrice()
     {
             return price;
-    }
-
-    public boolean IsFree(double price)
-    {
-        if(price==0.0)
-        {
-          return true;
-        }
-     return false;
     }
     public abstract void displayInfo();
 }

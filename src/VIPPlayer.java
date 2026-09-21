@@ -1,2 +1,2 @@
-public class VIPPlayer extends Player{
-}
+//public class VIPPlayer extends Player{
+//}

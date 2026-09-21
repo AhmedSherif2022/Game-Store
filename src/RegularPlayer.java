@@ -1,4 +1,4 @@
-public class RegularPlayer extends Player
-{
+//public class RegularPlayer extends Player
+//{
 
-}
+//}
