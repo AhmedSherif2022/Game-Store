@@ -1,4 +1,4 @@
-public class Player {
+public abstract class Player {
     private int id;
     private String name;
 
@@ -26,5 +26,20 @@ public class Player {
     public void setName(String name)
     {
         this.name = name;
+    }
+    public abstract double getdiscount();
+
+    public double applyDiscount(double price)
+    {
+        double discount = getdiscount();
+        return price * (1 - discount);
+    }
+    @Override
+    public String toString()
+    {
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
