@@ -1,22 +1,29 @@
-public abstract class Game extends Order {
-    private static int nextId = 1;
-    private String name;
+public abstract class Game {
+
+    private static int nextId = 1;   // shared counter — guarantees every game gets a unique id
+
     private final int id;
+    private String name;
+    private double price;
     private Genre genre;
     private double rating;
-    private double price;
-    public Game(String name, int nextid,double price, Genre genre, double rating)
-    {
-        this.name = name;
-        this.id = generateId();
-        this.price=price;
-        this.genre=genre;
 
+    public Game(String name, double price, Genre genre, double rating) {
+        this.id = generateId();
+        this.name = name;
+        setPrice(price);
+        this.genre = genre;
         this.rating = rating;
     }
+
     private static int generateId()
     {
         return nextId++;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getName()
@@ -29,11 +36,20 @@ public abstract class Game extends Order {
         this.name = name;
     }
 
-    public int getId()
-    {
-        return id;
+    public double getPrice() {
+        return price;
     }
-
+    public void setPrice(double price) {
+        try {
+            if (price < 0) {
+                throw new IllegalArgumentException("Price cannot be negative");
+            }
+            this.price = price;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+            this.price = 0;   // fallback value if the input was invalid
+        }
+    }
     public Genre getGenre()
     {
         return genre;
@@ -41,7 +57,7 @@ public abstract class Game extends Order {
 
     public void setGenre(Genre genre)
     {
-        this.genre=genre;
+        this.genre = genre;
     }
 
     public double getRating()
@@ -53,13 +69,16 @@ public abstract class Game extends Order {
     {
         this.rating = rating;
     }
-    public void setPrice(double price)
+
+    // Shared helper — subclasses can call this to print the common fields
+    public  void displayBaseInfo()
     {
-        this.price=price;
-    }
-    public double getPrice()
-    {
-            return price;
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Price: $" + getPrice());
+        System.out.println("Genre: " + genre);
+        System.out.println("Rating: " + rating);
     }
     public abstract void displayInfo();
+
 }

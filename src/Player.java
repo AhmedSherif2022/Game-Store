@@ -1,4 +1,4 @@
-public abstract class Player {
+public abstract class Player implements Discountable{
     private int id;
     private String name;
 
@@ -22,13 +22,10 @@ public abstract class Player {
     {
         return name;
     }
-
     public void setName(String name)
     {
         this.name = name;
     }
-    public abstract double getdiscount();
-
     public double applyDiscount(double price)
     {
         double discount = getdiscount();
