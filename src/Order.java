@@ -37,14 +37,8 @@ public class Order {
         return player.applyDiscount(subtotal);
     }
 
-    public void checkout() {
-        if (games.isEmpty()) {
-            throw new IllegalStateException("Cannot checkout an empty order");
-        }
-        status = OrderStatus.CHECKED_OUT;
-    }
-
-    public void cancel() {
+    public void cancel()
+    {
         status = OrderStatus.CANCELLED;
         System.out.println("Order has been cancelled.");
     }
@@ -64,7 +58,6 @@ public class Order {
     public void displayInfo() {
         System.out.println("===== Order Info =====");
         System.out.println("Player: " + player.getName());
-        System.out.println("Status: " + status);
 
         if (games.isEmpty()) {
             System.out.println("No games in this order.");
