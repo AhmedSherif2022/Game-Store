@@ -69,6 +69,10 @@ public class Tournament
             System.out.println("Error: " + e.getMessage());
         }
     }
+    public Player getWinner()
+    {
+        return winner;
+    }
     public void displayInfo()
     {
         System.out.println("===== Tournament Info =====");

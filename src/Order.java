@@ -27,9 +27,11 @@ public class Order {
         return games.remove(game);
     }
 
-    public double calculateTotal() {
+    public double calculateTotal()
+    {
         double subtotal = 0;
-        for (Game game : games) {
+        for (Game game : games)
+        {
             subtotal += game.getPrice();
         }
         return player.applyDiscount(subtotal);
@@ -40,7 +42,6 @@ public class Order {
             throw new IllegalStateException("Cannot checkout an empty order");
         }
         status = OrderStatus.CHECKED_OUT;
-        System.out.println("Checkout successful. Total: $" + calculateTotal());
     }
 
     public void cancel() {
