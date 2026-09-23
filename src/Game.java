@@ -79,6 +79,6 @@ public abstract class Game {
         System.out.println("Genre: " + genre);
         System.out.println("Rating: " + rating);
     }
-    public abstract void displayInfo();
+
 
 }

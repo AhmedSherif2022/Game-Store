@@ -11,9 +11,6 @@ public class ConsoleGame extends Game
     {
         return super.getPrice() + CONSOLE_LICENSE_PRICE;
     }
-    public void displayInfo()
-    {
-        displayBaseInfo();
-    }
+
 
 }

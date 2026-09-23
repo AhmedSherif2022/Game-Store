@@ -37,11 +37,6 @@ public class Order {
         return player.applyDiscount(subtotal);
     }
 
-    public void cancel()
-    {
-        status = OrderStatus.CANCELLED;
-        System.out.println("Order has been cancelled.");
-    }
 
     public OrderStatus getStatus() {
         return status;

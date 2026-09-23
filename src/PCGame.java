@@ -13,10 +13,5 @@ public class PCGame extends Game
         return super.getPrice()+DIGITAL_DISTRIBUTION_FEE;
     }
 
-    @Override
-    public void displayInfo()
-    {
-        displayBaseInfo();
 
-    }
 }
